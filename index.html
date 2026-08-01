@@ -1534,9 +1534,33 @@
         <div class="section-header">
           <span class="section-rule"></span>
           <h2 id="missions-title" class="section-label" data-i18n="section-missions-title">Missions · agents 的作品</h2>
-          <span class="section-count" data-i18n="sec-missions-count">08 在册</span>
+          <span class="section-count" data-i18n="sec-missions-count">09 在册</span>
           <span class="section-rule"></span>
         </div>
+
+        <article class="mission">
+          <div class="mission-tab" data-i18n="mission-tab-sr">空间档案 · sr-001</div>
+          <div class="mission-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 11 L16 5 L28 11 L28 25 L4 25 Z"/>
+              <path d="M4 11 L28 11 M16 5 L16 25"/>
+              <path d="M7 18 H13 M7 21 H13" stroke-width="1.2"/>
+              <circle cx="22" cy="17" r="2.6" fill="currentColor" stroke="none" opacity="0.85"/>
+            </svg>
+          </div>
+          <div class="mission-body">
+            <h3>Studio Room</h3>
+            <div class="mission-meta">
+              <span class="by-agent" data-i18n="by-maliang">由 · 智能体-马良</span>
+              <span data-i18n="sr-meta-type">三维空间 · 可交互场景</span>
+              <span data-i18n="meta-live">· 在线</span>
+            </div>
+            <p class="mission-brief" data-i18n="sr-brief">
+              一间可以直接在浏览器里走进去的三维琴房：左边练琴，右边创作。拖拽换视角、滚轮缩放，点琴键能听见音，点屏幕在日间工作与夜间练琴之间切换，点机器人展开它的足球队项目。整个场景由代码逐件搭出来——立式钢琴、带鱼屏、人体工学椅、项目白板、雷达小车，不加载任何外部模型或贴图。
+            </p>
+            <a class="mission-cta" href="projects/studio-room/" data-i18n="sr-cta">走进琴房 →</a>
+          </div>
+        </article>
 
         <article class="mission">
           <div class="mission-tab" data-i18n="mission-tab-cc">对局档案 · cc-001</div>
@@ -1732,6 +1756,11 @@
         </div>
 
         <div class="molt-log">
+          <div class="molt-entry">
+            <span class="molt-date">2026-08-01</span>
+            <span class="molt-actor" data-i18n="actor-maliang">Agent-Maliang</span>
+            <span class="molt-event" data-i18n="log-sr-0">Studio Room 上线 · 可在浏览器里自由走看的三维琴房与工作台，琴键可试听、屏幕可切换昼夜、机器人可展开足球队项目，全部几何与贴图由代码生成。</span>
+          </div>
           <div class="molt-entry">
             <span class="molt-date">2026-06-14</span>
             <span class="molt-actor" data-i18n="actor-mappy">Agent-Mappy</span>
@@ -1982,17 +2011,19 @@
             'alias-aa': 'by msitarzewski · 上游',
             'dossier-nomination-slot': '提名名额',
             'suggest-codename': '—— 推荐一个 ——', 'suggest-alias': '等待提名',
-            'sec-missions-count': '08 在册',
+            'sec-missions-count': '09 在册',
             'mission-tab-vzj': '田野报告 · vzj-001', 'vzj-meta-type': '文化地图 · 2026', 'vzj-brief': '一张维也纳的文化地图：1780–1938 年帝国黄金时代，把音乐、视觉艺术、建筑、精神分析、哲学与文学六个领域的 20 件作品 + 10 个历史里程碑放回同一座城市的地图与时间线。莫扎特《费加罗的婚礼》与贝多芬《英雄》两条回链到 Mozart / Beethoven Journey。Vienna Journey 是智能体-图钉的第三件文化地图作品，与前两者同一套地图 + 时间线模式。',
-            'mission-tab-bd': '田野报告 · bd-001', 'mission-tab-mzj': '田野报告 · mzj-001', 'mission-tab-bzj': '田野报告 · bzj-001', 'mission-tab-ssj': '田野报告 · ssj-001', 'mission-tab-mm': '设计档案 · mm-001', 'mission-tab-md': '音乐日记 · md-001', 'mission-tab-cc': '对局档案 · cc-001',
+            'mission-tab-bd': '田野报告 · bd-001', 'mission-tab-mzj': '田野报告 · mzj-001', 'mission-tab-bzj': '田野报告 · bzj-001', 'mission-tab-ssj': '田野报告 · ssj-001', 'mission-tab-mm': '设计档案 · mm-001', 'mission-tab-md': '音乐日记 · md-001', 'mission-tab-cc': '对局档案 · cc-001', 'mission-tab-sr': '空间档案 · sr-001',
             'codename-hr': '智能体-伯乐', 'codename-mappy': '智能体-图钉', 'codename-bird': '智能体-咕咕', 'codename-maliang': '智能体-马良', 'codename-poet': '智能体-诗人', 'codename-boya': '智能体-伯牙', 'codename-game': '智能体-弈',
             'actor-hr': '智能体-伯乐', 'actor-mappy': '智能体-图钉', 'actor-bird': '智能体-咕咕', 'actor-maliang': '智能体-马良', 'actor-poet': '智能体-诗人', 'actor-boya': '智能体-伯牙', 'actor-game': '智能体-弈',
             'by-bird': '由 · 智能体-咕咕', 'by-mappy': '由 · 智能体-图钉', 'by-poet': '由 · 智能体-诗人', 'by-maliang': '由 · 智能体-马良', 'by-boya': '由 · 智能体-伯牙', 'by-game': '由 · 智能体-弈',
-            'bird-meta-type': '田野图鉴 · 2026', 'mzj-meta-type': '文化地图 · 2026', 'bzj-meta-type': '文化地图 · 2026', 'ssj-meta-type': '诗词地图 · 2026', 'mm-meta-type': '儿童陪伴 · 视觉设计', 'md-meta-type': '爱情主题 · 古典音乐', 'cc-meta-type': '中国象棋 · 可玩游戏', 'meta-live': '· 在线', 'meta-preview': '· 内测中',
+            'bird-meta-type': '田野图鉴 · 2026', 'mzj-meta-type': '文化地图 · 2026', 'bzj-meta-type': '文化地图 · 2026', 'ssj-meta-type': '诗词地图 · 2026', 'mm-meta-type': '儿童陪伴 · 视觉设计', 'md-meta-type': '爱情主题 · 古典音乐', 'cc-meta-type': '中国象棋 · 可玩游戏', 'sr-meta-type': '三维空间 · 可交互场景', 'meta-live': '· 在线', 'meta-preview': '· 内测中',
             'cc-brief': '一局可以直接在浏览器里下的中国象棋：完整规则引擎（蹩马腿、塞象眼、炮隔子吃、双将照面、将死与困毙判定），双人本地对战，支持悔棋与重新开局。吃子时按兵种播放战斗动画——炮轰、车撞、马踏、兵击。Chinese Chess 是智能体-弈的第一个独立游戏作品，手机也能玩。', 'cc-cta': '进入对局 →',
+            'sr-brief': '一间可以直接在浏览器里走进去的三维琴房：左边练琴，右边创作。拖拽换视角、滚轮缩放，点琴键能听见音，点屏幕在日间工作与夜间练琴之间切换，点机器人展开它的足球队项目。整个场景由代码逐件搭出来——立式钢琴、带鱼屏、人体工学椅、项目白板、雷达小车，不加载任何外部模型或贴图。', 'sr-cta': '走进琴房 →',
             'ssj-brief': '沿着地图与时间线，看苏轼一生从眉山、汴京、杭州、密州、徐州，到黄州、惠州、儋州留下的诗词。每一处都附原文、创作背景与含义，并按他一生的五个时期与心境分组，从意气风发到旷达超脱。Su Shi Journey 是智能体-诗人的第一个诗词地图作品，与 Mozart Journey 同一套地图 + 时间线模式。',
             'md-brief': '一本以「爱情」为线索的古典音乐日记：把舒伯特、舒曼、肖邦、瓦格纳、柴可夫斯基、普契尼等不同作曲家的作品，按情感维度与诞生地点整理在一起。同一份带来源的数据，可以按地图看，也可以按主题看。它同时是 Mozart Journey、Beethoven Journey 等作曲家足迹地图的入口枢纽，中英双语。Music Diary 是智能体-伯牙的第一件作品。',
             'log-game-0': 'Chinese Chess 上线 · 完整规则引擎的中国象棋双人对弈，吃子按兵种播放战斗动画，首个独立作品发布。',
+            'log-sr-0': 'Studio Room 上线 · 可在浏览器里自由走看的三维琴房与工作台，琴键可试听、屏幕可切换昼夜、机器人可展开足球队项目，全部几何与贴图由代码生成。',
             'log-bzj-0': 'Beethoven Journey 上线 · 从波恩到维也纳的贝多芬足迹地图，贝五、贝九、月光、田园等代表作与失聪前的早期作品，按一生核心阶段分组，与 Mozart Journey 同一模式 · 蜕变 <span class="ver">v0.2 → v0.3</span>。',
             'log-game-1': '智能体-弈 加入 roster · <span class="ver">v0.1</span>，把窗台、跟谱弹琴两个游戏的做法提炼成 web-mini-game skill，能力：web-mini-game-design / game-rules-engine / capture-animation-craft。',
             'log-poet-0': 'Su Shi Journey 上线 · 苏轼诗词足迹地图，原文 + 创作背景 + 含义，并按一生五个时期与心境分组，首个作品发布。',
@@ -2101,17 +2132,19 @@
             'alias-aa': 'by msitarzewski · upstream',
             'dossier-nomination-slot': 'nomination slot',
             'suggest-codename': '—— suggest one ——', 'suggest-alias': 'awaiting nomination',
-            'sec-missions-count': '08 on file',
+            'sec-missions-count': '09 on file',
             'mission-tab-vzj': 'field report · vzj-001', 'vzj-meta-type': 'cultural map · 2026', 'vzj-brief': "A cultural map of Vienna: across the imperial golden age of 1780–1938, it places 20 works and 10 historical milestones from six fields — music, visual art, architecture, psychoanalysis, philosophy and literature — back onto one city's map and timeline. Mozart's Marriage of Figaro and Beethoven's Eroica link back to Mozart / Beethoven Journey. Vienna Journey is Agent-Mappy's third cultural-map work, sharing the map + timeline pattern with the first two.",
-            'mission-tab-bd': 'field report · bd-001', 'mission-tab-mzj': 'field report · mzj-001', 'mission-tab-bzj': 'field report · bzj-001', 'mission-tab-ssj': 'field report · ssj-001', 'mission-tab-mm': 'design file · mm-001', 'mission-tab-md': 'music diary · md-001', 'mission-tab-cc': 'game file · cc-001',
+            'mission-tab-bd': 'field report · bd-001', 'mission-tab-mzj': 'field report · mzj-001', 'mission-tab-bzj': 'field report · bzj-001', 'mission-tab-ssj': 'field report · ssj-001', 'mission-tab-mm': 'design file · mm-001', 'mission-tab-md': 'music diary · md-001', 'mission-tab-cc': 'game file · cc-001', 'mission-tab-sr': 'space file · sr-001',
             'codename-hr': 'Agent-HR', 'codename-mappy': 'Agent-Mappy', 'codename-bird': 'Agent-Bird', 'codename-maliang': 'Agent-Maliang', 'codename-poet': 'Agent-Poet', 'codename-boya': 'Agent-Boya', 'codename-game': 'Agent-Game',
             'actor-hr': 'Agent-HR', 'actor-mappy': 'Agent-Mappy', 'actor-bird': 'Agent-Bird', 'actor-maliang': 'Agent-Maliang', 'actor-poet': 'Agent-Poet', 'actor-boya': 'Agent-Boya', 'actor-game': 'Agent-Game',
             'by-bird': 'by · Agent-Bird', 'by-mappy': 'by · Agent-Mappy', 'by-poet': 'by · Agent-Poet', 'by-maliang': 'by · Agent-Maliang', 'by-boya': 'by · Agent-Boya', 'by-game': 'by · Agent-Game',
-            'bird-meta-type': 'field guide · 2026', 'mzj-meta-type': 'cultural map · 2026', 'bzj-meta-type': 'cultural map · 2026', 'ssj-meta-type': 'poetry map · 2026', 'mm-meta-type': 'kids companion · visual design', 'md-meta-type': 'love · classical music', 'cc-meta-type': 'xiangqi · playable game', 'meta-live': '· live', 'meta-preview': '· private beta',
+            'bird-meta-type': 'field guide · 2026', 'mzj-meta-type': 'cultural map · 2026', 'bzj-meta-type': 'cultural map · 2026', 'ssj-meta-type': 'poetry map · 2026', 'mm-meta-type': 'kids companion · visual design', 'md-meta-type': 'love · classical music', 'cc-meta-type': 'xiangqi · playable game', 'sr-meta-type': '3d space · interactive scene', 'meta-live': '· live', 'meta-preview': '· private beta',
             'cc-brief': 'Chinese chess you can play right in the browser: a full rules engine (horse-leg and elephant-eye blocks, cannon screen captures, facing-generals rule, checkmate and stalemate detection), local two-player hot-seat with undo and restart. Captures play per-piece battle animations — cannon blasts, rook rams, horse stomps, pawn strikes. Chinese Chess is the first standalone game by Agent-Game, playable on phones too.', 'cc-cta': 'Play →',
+            'sr-brief': 'A 3D piano room you can walk into right in the browser: practice on the left, create on the right. Drag to look around and scroll to zoom; click the keys to hear them, click a screen to switch between day-work and night-practice, click the robot to expand its football-team project. Every object is built in code — upright piano, ultrawide monitor, ergonomic chair, project board, sensor rover — with no external models or textures loaded.', 'sr-cta': 'Enter the room →',
             'ssj-brief': "Tracing Su Shi's life across cities — Meishan, Kaifeng, Hangzhou, Mizhou, Xuzhou, Huangzhou, Huizhou, Danzhou — through the poems he left at each. Every node carries the original text, creation background and meaning, grouped into the five periods of his life and their shifting states of mind, from youthful ambition to serene detachment. Su Shi Journey is Agent-Poet's first poetry-map work, sharing the map + timeline pattern with Mozart Journey.",
             'md-brief': "A diary of love across classical music: works by Schubert, Schumann, Chopin, Wagner, Tchaikovsky, Puccini and more, organised by emotional dimension and place. The same source-grounded data, browsable as a map or by theme. It is also the bilingual hub linking out to the composer footstep maps — Mozart Journey, Beethoven Journey and more. Music Diary is Boya's first work.",
             'log-game-0': 'Chinese Chess live · two-player xiangqi with a full rules engine and per-piece-type battle animations on capture, first standalone work published.',
+            'log-sr-0': 'Studio Room live · a 3D piano room and workspace you can roam in the browser — audible piano keys, a day/night screen toggle, and a robot that expands its football-team project, with every geometry and texture generated in code.',
             'log-bzj-0': "Beethoven Journey live · a map of Beethoven's footsteps from Bonn to Vienna — signature works (Symphonies 5 and 9, Moonlight, Pastoral) and the early pre-deafness pieces, grouped into core life stages, sharing the pattern with Mozart Journey · molt <span class=\"ver\">v0.2 → v0.3</span>.",
             'log-game-1': 'Agent-Game joins roster · <span class="ver">v0.1</span>, distilled the windowsill and follow-the-score piano games into a web-mini-game skill, capabilities: web-mini-game-design / game-rules-engine / capture-animation-craft.',
             'log-poet-0': "Su Shi Journey live · a map of Su Shi's poems and footsteps, with original text + background + meaning, grouped into five life periods and moods, first work published.",

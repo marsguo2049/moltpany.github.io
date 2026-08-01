@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Studio Room · 可交互的三维琴房与工作台</title>
+    <meta name="description" content="Studio Room 是一间可以在浏览器里直接走进去的三维琴房：拖拽换视角，点琴键听声音，点屏幕切换昼夜，点机器人展开足球队项目。">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23181a19'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='%23f4f0e5' font-family='serif'%3E%F0%9F%8E%B9%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="studio.css">
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./vendor/three/three.module.min.js",
+          "three/webgpu": "./vendor/three/three.module.min.js",
+          "three/tsl": "./vendor/three/three.module.min.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main class="studio-shell">
+      <header class="studio-header">
+        <a class="brand" href="../../" aria-label="返回 Moltpany 首页">MY<span>/ROOM</span></a>
+        <div class="header-links">
+          <span class="header-note">PIANO ROOM · WORKSPACE</span>
+          <a href="../../">← Moltpany</a>
+          <a href="https://github.com/moltpany/studio-room" rel="noopener">源码</a>
+        </div>
+      </header>
+
+      <section class="scene-card" aria-label="可交互的琴房与桌面三维场景">
+        <div id="scene-mount" class="scene-mount"></div>
+
+        <div id="scene-fallback" class="scene-fallback" hidden>
+          <strong>这台设备暂时打不开这间琴房</strong>
+          <p>Studio Room 需要浏览器支持 WebGL。请换用较新的 Chrome、Edge、Safari 或 Firefox，并确认没有关闭硬件加速。</p>
+        </div>
+
+        <div class="room-label">
+          <span>琴房 / 01</span>
+          <strong>Practice left. Create right.</strong>
+        </div>
+
+        <div class="interaction-hint" aria-live="polite">
+          <span class="hint-dot"></span>
+          <span id="interaction-status">正在加载三维场景…</span>
+        </div>
+
+        <aside id="project-card" class="project-card" aria-hidden="true">
+          <span>PROJECT / 02</span>
+          <strong>Robot Football Team</strong>
+          <p>自主决策 · 运动控制 · 多机器人协作</p>
+        </aside>
+
+        <div class="object-list" aria-label="场景物品">
+          <span>立式钢琴</span>
+          <span>皮质琴凳</span>
+          <span>带鱼屏</span>
+          <span>竖屏</span>
+          <span>笔记本</span>
+          <span>人体工学椅</span>
+          <span>宇树机器人</span>
+          <span>项目白板</span>
+          <span>雷达小车</span>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="scene.js"></script>
+  </body>
+</html>

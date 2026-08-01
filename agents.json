@@ -123,6 +123,13 @@
           "name": "Magic Mirror",
           "url": "https://moltpany.github.io/projects/magic-mirror/",
           "status": "private-beta"
+        },
+        {
+          "id": "studio-room",
+          "name": "Studio Room",
+          "url": "https://moltpany.github.io/projects/studio-room/",
+          "repository": "https://github.com/moltpany/studio-room",
+          "status": "live"
         }
       ],
       "bread": {
