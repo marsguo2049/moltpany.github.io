@@ -13,7 +13,7 @@ const MOZART_JOURNEY_URL = "https://moltpany.github.io/mozart-journey/";
 const AGENT_MAPPY_REPOSITORY = "https://github.com/moltpany/Agent-Mappy";
 const AGENT_MALIANG_REPOSITORY = "https://github.com/moltpany/Agent-Maliang";
 const MAGIC_MIRROR_URL = "https://moltpany.github.io/projects/magic-mirror/";
-const STUDIO_ROOM_URL = "https://moltpany.github.io/projects/studio-room/";
+const STUDIO_ROOM_URL = "https://moltpany.github.io/studio-room/";
 const STUDIO_ROOM_REPOSITORY = "https://github.com/moltpany/studio-room";
 const VISUAL_AGENT_SERIAL_PATTERN = /\b(?:mp|ob)-\d{3}\b/i;
 
@@ -38,7 +38,8 @@ function testPortfolioHome() {
   assert(html.includes(AGENT_MALIANG_REPOSITORY), "home should link to the Agent-Maliang repository");
   assert(html.includes("Magic Mirror"), "home should feature Magic Mirror");
   assert(html.includes("Studio Room"), "home should feature Studio Room");
-  assert(html.includes('href="projects/studio-room/"'), "home should link to the Studio Room demo");
+  assert(html.includes(STUDIO_ROOM_URL), "home should link to the external Studio Room demo");
+  assert(!html.includes("projects/studio-room/"), "home should not link to an in-repo Studio Room copy");
   assert(html.includes(MAGIC_MIRROR_URL), "home should link to the Magic Mirror work repository");
   assert(html.includes(AGENT_MAPPY_REPOSITORY), "home should link to the Agent-Mappy repository");
   assert(html.includes('class="photo agent-avatar"'), "home should render agent avatar artwork");
@@ -142,33 +143,29 @@ function testMagicMirrorLanding() {
   assert(!registryRaw.includes(PRIVATE_MAGIC_MIRROR_REPO), "agents.json should not expose the private Magic Mirror repository");
 }
 
-const studioRoomRoot = path.join(root, "projects", "studio-room");
+function testStudioRoomIsExternal() {
+  // Studio Room ships from its own repository and is served by GitHub Pages there.
+  // This site only links to it; it must not carry a local copy of the demo.
+  assert(
+    !fs.existsSync(path.join(root, "projects", "studio-room")),
+    "Studio Room should not be vendored into the site repository",
+  );
 
-function testStudioRoomDemo() {
-  // The demo must stay static and self-contained: no build step, no CDN.
-  const indexPath = path.join(studioRoomRoot, "index.html");
-  assert(fs.existsSync(indexPath), "Studio Room demo page should exist");
-  assert(fs.existsSync(path.join(studioRoomRoot, "scene.js")), "Studio Room scene module should exist");
-  assert(fs.existsSync(path.join(studioRoomRoot, "studio.css")), "Studio Room stylesheet should exist");
+  const home = fs.readFileSync(portfolioIndexPath, "utf8");
+  const agentsPage = fs.readFileSync(agentsPageIndexPath, "utf8");
+  const registry = readJson(agentsRegistryPath);
 
-  for (const asset of ["three.module.min.js", "three.core.min.js", "OrbitControls.js", "RoundedBoxGeometry.js", "LICENSE"]) {
-    assert(
-      fs.existsSync(path.join(studioRoomRoot, "vendor", "three", asset)),
-      `Studio Room should vendor ${asset} instead of loading it from a CDN`,
-    );
-  }
+  assert(home.includes("Studio Room"), "home should feature Studio Room");
+  assert(home.includes(STUDIO_ROOM_URL), "home should link to the Studio Room public URL");
+  assert(agentsPage.includes(STUDIO_ROOM_URL), "agents page should link to the Studio Room public URL");
 
-  const page = fs.readFileSync(indexPath, "utf8");
-  assert(page.includes('"three": "./vendor/three/three.module.min.js"'), "Studio Room should map the three specifier to the vendored build");
-  assert(page.includes('src="scene.js"'), "Studio Room should load its scene module");
-  assert(!/https?:\/\/[^"']*\.(?:js|css)\b/.test(page), "Studio Room page should not load remote scripts or stylesheets");
-
-  const scene = fs.readFileSync(path.join(studioRoomRoot, "scene.js"), "utf8");
-  assert(!/from\s+["']https?:/.test(scene), "Studio Room scene should not import from a remote origin");
-  assert(scene.includes("webglAvailable"), "Studio Room should degrade gracefully without WebGL");
+  const maliang = registry.agents.find((agent) => agent.id === "maliang");
+  const studioRoom = maliang.works.find((work) => work.id === "studio-room");
+  assert(studioRoom.url === STUDIO_ROOM_URL, "Studio Room work URL should point at its own Pages site");
+  assert(studioRoom.repository === STUDIO_ROOM_REPOSITORY, "Studio Room should link to its source repository");
 }
 
-const tests = [testPortfolioHome, testAgentsRegistry, testAgentsPage, testMagicMirrorLanding, testStudioRoomDemo];
+const tests = [testPortfolioHome, testAgentsRegistry, testAgentsPage, testMagicMirrorLanding, testStudioRoomIsExternal];
 
 (async () => {
   for (const test of tests) {

@@ -16,8 +16,8 @@
 - Agent registry: `agents.json`.
 - Agents roster page: `projects/agents/index.html`, `projects/agents/styles.css`.
 - External work repository: `https://github.com/moltpany/Mozart-Journey`.
+- External work repository: `https://github.com/moltpany/studio-room` (Studio Room source + published page).
 - Mozart Journey public URL: `https://moltpany.github.io/mozart-journey/`.
-- Studio Room demo: `projects/studio-room/` (`index.html`, `studio.css`, `scene.js`, `vendor/three/`).
 - Design and implementation notes: `docs/`.
 - Tests: `tests/run-tests.js`.
 
@@ -25,7 +25,7 @@
 - Prefer small, reviewable diffs.
 - Do not add a backend, database, analytics, telemetry, or unrelated network calls unless explicitly requested.
 - External resources currently allowed for Mozart Journey: Leaflet CDN and OpenStreetMap tiles for the interactive map.
-- Studio Room adds no external resources: its three.js copy is vendored in-repo. Keep it that way; do not swap it for a CDN import.
+- Studio Room is an external work and loads nothing into this site; the homepage and agents page only link to its public URL.
 - Keep UI copy in Chinese unless the user asks otherwise.
 
 ## Homepage rules
@@ -41,7 +41,7 @@
 - Agent-Bird's repository is `https://github.com/moltpany/Agent-Bird`.
 - Agent-Maliang's repository is `https://github.com/moltpany/Agent-Maliang` (public framework, MIT).
 - Agent-Poet's repository is `https://github.com/moltpany/Agent-Poet` (public poetry-journey framework, MIT). Its first work is `Su Shi Journey` at `https://moltpany.github.io/sushi-journey/`, an external work that is not edited in this repository.
-- `projects/studio-room/` is the public, browsable build of `Studio Room`, Agent-Maliang's interactive 3D piano room and workspace (URL `https://moltpany.github.io/projects/studio-room/`). It is a static three.js page with no build step; `three.js` is vendored under `projects/studio-room/vendor/three/` so the page makes no CDN or other external network calls. The full-stack source project lives at `https://github.com/moltpany/studio-room` and is not edited in this repository.
+- `Studio Room` is Agent-Maliang's interactive 3D piano room and workspace. It is an external work: both the source and the published page live in `https://github.com/moltpany/studio-room`, served by GitHub Pages at `https://moltpany.github.io/studio-room/`. Link to that URL; do not add an in-repo `projects/studio-room/` copy.
 - Magic Mirror is a **private product** in development. The public site must only expose a what/why landing page at `projects/magic-mirror/` (URL `https://moltpany.github.io/projects/magic-mirror/`); never link to the private product repository, and never publish product internals (generation pipeline, prompt/method details, real character assets).
 
 ## Agent registry rules
