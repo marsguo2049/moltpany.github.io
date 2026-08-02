@@ -4,6 +4,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const portfolioIndexPath = path.join(root, "index.html");
 const portfolioStylesPath = path.join(root, "styles.css");
+const classicIndexPath = path.join(root, "classic", "index.html");
 const agentsRegistryPath = path.join(root, "agents.json");
 const agentsPageRoot = path.join(root, "projects", "agents");
 const agentsPageIndexPath = path.join(agentsPageRoot, "index.html");
@@ -29,30 +30,39 @@ function readJson(filePath) {
 
 function testPortfolioHome() {
   const html = fs.readFileSync(portfolioIndexPath, "utf8");
-  const styles = fs.readFileSync(portfolioStylesPath, "utf8");
-  assert(html.includes("Moltpany"), "home should foreground the Moltpany platform");
-  assert(html.includes("self-evolving agents"), "home should explain the agent commons");
+  assert(html.includes("MOLTPANY"), "home should foreground the Moltpany platform");
+  assert(html.includes('id="agentsView"'), "home should offer the Agents roster view");
+  assert(html.includes('id="worksView"'), "home should offer the independent Works archive");
+  assert(html.includes('href="/classic/"'), "home should link to the preserved classic homepage");
   assert(html.includes("Agent-HR"), "home should feature Agent-HR");
   assert(html.includes("Agent-Mappy"), "home should feature Agent-Mappy");
+  assert(html.includes("Agent-Bird"), "home should feature Agent-Bird");
   assert(html.includes("Agent-Maliang"), "home should feature Agent-Maliang");
-  assert(html.includes(AGENT_MALIANG_REPOSITORY), "home should link to the Agent-Maliang repository");
+  assert(html.includes("Agent-Boya"), "home should feature Agent-Boya");
+  assert(html.includes("Agent-Poet"), "home should feature Agent-Poet");
+  assert(html.includes("Agent-Game"), "home should feature Agent-Game");
   assert(html.includes("Magic Mirror"), "home should feature Magic Mirror");
   assert(html.includes("Studio Room"), "home should feature Studio Room");
   assert(html.includes(STUDIO_ROOM_URL), "home should link to the external Studio Room demo");
   assert(!html.includes("projects/studio-room/"), "home should not link to an in-repo Studio Room copy");
   assert(html.includes(MAGIC_MIRROR_URL), "home should link to the Magic Mirror work repository");
-  assert(html.includes(AGENT_MAPPY_REPOSITORY), "home should link to the Agent-Mappy repository");
-  assert(html.includes('class="photo agent-avatar"'), "home should render agent avatar artwork");
   assert(html.includes("agents.json"), "home should link to the machine-readable registry");
-  assert(html.includes("projects/agents/"), "home should link to the agents page");
   assert(html.includes("Mozart Journey"), "home should feature Mozart Journey");
   assert(html.includes(MOZART_JOURNEY_URL), "home should link to the migrated Mozart Journey subproject");
   assert(!html.includes("projects/mozart-journey/"), "home should not link to the legacy in-repo Mozart Journey path");
-  assert(html.includes("智能体-图钉的第一个文化地图作品"), "home should reframe Mozart Journey as Agent-Mappy's first work");
   assert(!VISUAL_AGENT_SERIAL_PATTERN.test(html), "home should not show visual agent serial numbers like mp-001 or ob-001");
   assert(!html.includes("leaflet.js"), "portfolio home should not load the Mozart map application");
-  assert(styles.includes(".agent-card"), "home should style agent cards");
-  assert(styles.includes(".registry-section"), "home should style the registry section");
+}
+
+function testClassicHome() {
+  assert(fs.existsSync(classicIndexPath), "classic homepage should be preserved at /classic/");
+  const html = fs.readFileSync(classicIndexPath, "utf8");
+  const styles = fs.readFileSync(portfolioStylesPath, "utf8");
+  assert(html.includes("self-evolving agents"), "classic home should preserve the agent commons introduction");
+  assert(html.includes('href="/projects/agents/"'), "classic home should use a root-safe agents page link");
+  assert(html.includes(AGENT_MAPPY_REPOSITORY), "classic home should retain agent repository links");
+  assert(styles.includes(".agent-card"), "shared styles should retain classic agent cards");
+  assert(styles.includes(".registry-section"), "shared styles should retain the classic registry section");
 }
 
 function testAgentsRegistry() {
@@ -165,7 +175,7 @@ function testStudioRoomIsExternal() {
   assert(studioRoom.repository === STUDIO_ROOM_REPOSITORY, "Studio Room should link to its source repository");
 }
 
-const tests = [testPortfolioHome, testAgentsRegistry, testAgentsPage, testMagicMirrorLanding, testStudioRoomIsExternal];
+const tests = [testPortfolioHome, testClassicHome, testAgentsRegistry, testAgentsPage, testMagicMirrorLanding, testStudioRoomIsExternal];
 
 (async () => {
   for (const test of tests) {

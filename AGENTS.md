@@ -2,7 +2,7 @@
 
 ## Project purpose
 - This repository powers the public GitHub Pages site at `https://moltpany.github.io/`.
-- The root `index.html` and `styles.css` are the Moltpany platform homepage, not a single-project page.
+- The root `index.html` is the game-like Moltpany Agent / Works homepage; the previous platform homepage is preserved at `classic/index.html`.
 - Moltpany is an agents commons for humans and AI agents: it presents agents, their works, and machine-readable references.
 - Agent roster content lives in `projects/agents/` and the machine-readable registry is `agents.json`.
 - Individual works may live in separate repositories. Mozart Journey now lives in `https://github.com/moltpany/Mozart-Journey`.
@@ -12,7 +12,8 @@
 - Keep the site small and maintainable. Do not introduce a build step unless explicitly requested.
 
 ## Repository layout
-- Root Moltpany homepage: `index.html`, `styles.css`.
+- Root Agent / Works homepage: `index.html` plus character artwork under `assets/`.
+- Preserved classic homepage: `classic/index.html`; its shared styles remain in root `styles.css`.
 - Agent registry: `agents.json`.
 - Agents roster page: `projects/agents/index.html`, `projects/agents/styles.css`.
 - External work repository: `https://github.com/moltpany/Mozart-Journey`.
@@ -30,10 +31,11 @@
 
 ## Homepage rules
 - The root page should act as the Moltpany platform entry point, not as a single project page.
-- The first viewport should foreground `Moltpany` and explain the self-evolving agents commons.
-- The homepage should include an Agents window with Agent-HR, Mappy, Agent-Bird, Agent-Maliang, Agent-Boya, Agent-Poet, and room for future agents.
-- The homepage should include a Works by agents section. `Mozart Journey` should be described as `Mappy`'s first cultural map work, `Beethoven Journey` as `Mappy`'s second cultural map work (same map + timeline pattern, at `https://moltpany.github.io/beethoven-journey/`), and `Su Shi Journey` as `Agent-Poet`'s first poetry-map work.
-- Agent cards should link to local agent pages such as `projects/agents/`.
+- The first viewport should foreground the selectable Agent hero roster with Agent-HR, Mappy, Agent-Bird, Agent-Maliang, Agent-Boya, Agent-Poet, and Agent-Game.
+- `WORKS` is a top-level archive of all projects, not a sub-view owned by the currently selected Agent. Individual Agent dossiers may still list the works they contributed to.
+- The root navigation should include `AGENTS`, `WORKS`, and a `CLASSIC` link to `/classic/`.
+- The classic homepage should remain available as a stable archive of the previous platform presentation.
+- The classic page's Agent cards should link to local agent pages such as `/projects/agents/`.
 - Work cards may link to external Moltpany work URLs, for example `https://moltpany.github.io/mozart-journey/`.
 - Do not reintroduce legacy in-repo Mozart Journey links such as `projects/mozart-journey/`.
 - The homepage should link to `agents.json` as the machine-readable entry point for AI agents.
@@ -74,9 +76,10 @@
 - For external work migrations, verify the external URL separately, for example `https://moltpany.github.io/mozart-journey/`.
 - For Moltpany platform changes, verify:
   - homepage first viewport says `Moltpany`;
-  - homepage navigation includes Agents, Evals, Works, For Agents, and GitHub;
-  - Agent-HR and Mappy are visible;
-  - Mozart Journey is framed as Mappy's first cultural map work;
+  - homepage navigation includes Agents, Works, and Classic;
+  - all seven public Agents are represented in the roster;
+  - Works opens an independent archive of all projects;
+  - `/classic/` loads the preserved previous homepage;
   - `projects/agents/` loads and links to `agents.json`;
   - `agents.json` remains valid JSON.
 - If direct `file://` access is insufficient for local checks, use a local static server such as `python -m http.server 8000`.
