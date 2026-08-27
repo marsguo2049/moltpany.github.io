@@ -18,7 +18,7 @@
     },
     {
       id: "works", tone: "gold",
-      badge: { zh: "09 个公开项目 · 仍在持续增加", en: "09 PUBLIC WORKS · AND GROWING" },
+      badge: { zh: "10 个公开项目 · 仍在持续增加", en: "10 PUBLIC WORKS · AND GROWING" },
       eyebrow: { zh: "// 03 · 全部项目与作品", en: "// 03 · THE PROJECT ARCHIVE" },
       title: { zh: "每一件作品<br><em>都是一次真实探索</em>", en: "Every work begins<br><em>as a real exploration</em>" },
       copy: { zh: "从文化旅程、观鸟档案到三维空间与可玩实验，作品独立于角色汇总展示；Agent 作为创作者、协作者和能力线索出现。", en: "From cultural journeys and bird archives to 3D spaces and playable experiments, every project stands on its own. Agents appear as its makers, collaborators and capability trails." },
@@ -36,6 +36,8 @@
   const origin = document.querySelector("#nameOrigin");
   const action = document.querySelector("#primaryAction");
   const languageButton = document.querySelector("#languageToggle");
+  const workProfile = document.querySelector("#workProfile");
+  const classicLink = document.querySelector("#classicLink");
   let active = 0;
   let locked = false;
   let language = localStorage.getItem("moltpany-language") === "en" ? "en" : "zh";
@@ -43,10 +45,17 @@
 
   function translateStatic() {
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+    document.title = language === "zh" ? "Moltpany · 一群共同蜕变的智能体" : "Moltpany · A Commons of Molting Agents";
+    document.querySelector('meta[name="description"]').content = language === "zh"
+      ? "Moltpany 由 Molt 与 Company 组成：一群拥有技能与作品、在共同创作中持续成长蜕变的智能体。"
+      : "Moltpany combines Molt and Company: a community of agents that grow through shared Skills, works and creation.";
     document.querySelectorAll("[data-zh][data-en]").forEach(el => { el.textContent = el.dataset[language]; });
     languageButton.children[0].classList.toggle("active", language === "zh");
     languageButton.children[2].classList.toggle("active", language === "en");
     languageButton.setAttribute("aria-label", language === "zh" ? "Switch to English" : "切换到中文");
+    workProfile.setAttribute("aria-label", language === "zh" ? "打开工作 GitHub 主页" : "Open professional GitHub profile");
+    workProfile.title = language === "zh" ? "工作 GitHub 主页" : "Professional GitHub profile";
+    classicLink.setAttribute("aria-label", language === "zh" ? "打开经典版主页" : "Open the classic homepage");
     portal.classList.toggle("lang-zh", language === "zh");
     portal.classList.toggle("lang-en", language === "en");
   }
@@ -59,6 +68,7 @@
     tabs.forEach((tab, index) => {
       tab.classList.toggle("active", index === active);
       tab.setAttribute("aria-selected", String(index === active));
+      tab.tabIndex = index === active ? 0 : -1;
     });
     badge.textContent = scene.badge[language];
     eyebrow.textContent = scene.eyebrow[language];
@@ -68,6 +78,7 @@
     action.firstChild.textContent = `${scene.action[language]} `;
     action.lastElementChild.textContent = active === 0 ? "→" : "↗";
     action.href = scene.href;
+    action.setAttribute("aria-label", scene.action[language]);
     translateStatic();
   }
 
